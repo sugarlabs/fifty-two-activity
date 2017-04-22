@@ -1,0 +1,21 @@
+All entries are in DD/MM/YY format
+
+23/06/08
+
+FiftyTwo now has many features, including: A main menu, photo decks, support for the newer joyride builds, and a fully-functional GUI. This is version 0.2.
+
+05/03/08 - Secondary commit
+Crazy Eights is pretty much complete for non-mesh play. The FiftyTwo library leaves a lot to be desired for, though. It's pretty messy and needs optimization and doc comments. The smooth movement uses dirty rectangles now, rather than simply clearing the entire screen, making it several times faster.
+
+The AI play has been improved somewhat, but the suit-selection when the AI plays an eight needs to be fixed.
+
+Overall, Crazy Eights isn't doing too badly.
+
+06/02/08 - Initial release
+Crazy Eights is now playable in sugar form, though the AI still leaves something to be desired for.
+
+Currently, when you launch FiftyTwo, it goes directly into a game of Crazy Eights, 2 player, with you on the bottom and an AI player on the top. I'm working on a "setup game" menu that should allow you to set up a game of, say, AI versus AI, or player on the top and AI on the bottom, etc.
+
+Also, smooth movement is, shall we say, a tad slow?
+
+

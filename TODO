@@ -1,0 +1,6 @@
+ - Modularize crazyeights.py
+ - Move the localplayer's card/suit selection to localplayer class
+ - Write Go Fish
+ - Re-write cardgroup.sort() or add sorting code into draw_card()
+ - Implement: Solitare, Eucher, Freecell? (Copyrighted name? Opencell
+would be a good name) Hearts, Spades, Go Fish!
