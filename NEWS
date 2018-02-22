@@ -1,5 +1,8 @@
 All entries are in DD/MM/YY format
 
+22/02/18 - Port Activity
+ - Port activity to GTK3, Sugar Toolkit 3 and Sugargamev1.2
+
 23/06/08
 
 FiftyTwo now has many features, including: A main menu, photo decks, support for the newer joyride builds, and a fully-functional GUI. This is version 0.2.
