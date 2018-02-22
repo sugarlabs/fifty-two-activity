@@ -2,16 +2,21 @@
 # -*- coding: utf-8 -*-
 
 import sys
+import pygame
+import pygame.camera
 
-import gtk
-from sugar.activity import activity
-from sugar.graphics.toolbarbox import ToolbarBox
-from sugar.graphics.toolbutton import ToolButton
-from sugar.activity.widgets import ActivityToolbarButton
-from sugar.activity.widgets import StopButton
-from sugar.graphics.toolbarbox import ToolbarButton
-from sugar.graphics.objectchooser import ObjectChooser
-from sugar.datastore import datastore
+import gi
+gi.require_version('Gtk', '3.0')
+from gi.repository import Gtk
+from gi.repository import Gdk
+
+from sugar3.activity import activity
+from sugar3.graphics.toolbarbox import ToolbarBox
+from sugar3.activity.widgets import ActivityToolbarButton
+from sugar3.activity.widgets import StopButton
+from sugar3.graphics.objectchooser import ObjectChooser
+from sugar3.graphics.style import GRID_CELL_SIZE
+
 import sugargame.canvas
 
 import run
@@ -23,11 +28,20 @@ class Activity(activity.Activity):
     def __init__(self, handle):
         activity.Activity.__init__(self, handle)
 
-        self._activity = run.Game(self)
+        self.game = run.Game(self)
         self.build_toolbar()
-        self._pygamecanvas = sugargame.canvas.PygameCanvas(self)
+        self.game.canvas = self._pygamecanvas = sugargame.canvas.PygameCanvas(
+            self, main=self.game.run, modules=[pygame.display, pygame.font,
+            pygame.camera])
         self.set_canvas(self._pygamecanvas)
-        self._pygamecanvas.run_pygame(self._activity.loop)
+        Gdk.Screen.get_default().connect('size-changed',
+                                         self.__configure_cb)
+
+    def __configure_cb(self, event):
+        ''' Screen size has changed '''
+        pygame.display.set_mode((Gdk.Screen.width(),
+                                 Gdk.Screen.height() - GRID_CELL_SIZE),
+                                pygame.RESIZABLE)
 
     def build_toolbar(self):
         toolbar_box = ToolbarBox()
@@ -38,8 +52,7 @@ class Activity(activity.Activity):
         toolbar_box.toolbar.insert(activity_button, -1)
         activity_button.show()
 
-
-        separator = gtk.SeparatorToolItem()
+        separator = Gtk.SeparatorToolItem()
         separator.props.draw = False
         separator.set_expand(True)
         toolbar_box.toolbar.insert(separator, -1)
@@ -66,11 +79,11 @@ class Activity(activity.Activity):
         except TypeError:
             chooser = ObjectChooser(
                 None, self,
-                gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT)
+                Gtk.DialogFlags.MODAL | 0)
         if chooser is not None:
             try:
                 result = chooser.run()
-                if result == gtk.RESPONSE_ACCEPT:
+                if result == Gtk.ResponseType.ACCEPT:
                     jobject = chooser.get_selected_object()
                     if jobject and jobject.file_path:
                         name = jobject.metadata['title']

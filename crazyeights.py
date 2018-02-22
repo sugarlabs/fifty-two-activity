@@ -24,12 +24,14 @@
 #    59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             #
 ############################################################################
 
-import gtk
+import gi
+gi.require_version('Gtk', '3.0')
+from gi.repository import Gtk
+
 import fiftytwo
 from fiftytwo import card_width, card_height, UP, DOWN
-import os, sys, math, random
+import math, random
 import pygame
-import pygame.font
 from pygame.locals import *
 
 from gettext import gettext as _
@@ -179,8 +181,8 @@ def choose_suit(player, choosesuitimage, discard):
     while 1:
         fpslimiter.tick(20)
 
-        while gtk.events_pending():
-            gtk.main_iteration()
+        while Gtk.events_pending():
+            Gtk.main_iteration()
 
         for event in pygame.event.get():
             if event.type == QUIT:
@@ -256,7 +258,7 @@ def main(playertypes, screensize):
     localplayers = 0
     
     # Reduce load
-    pygame.event.set_blocked(MOUSEMOTION)
+    pygame.event.set_blocked(pygame.MOUSEMOTION)
     
     #positions = (((5, -card_height()/2), (sw-5, card_height()-(card_height()/2))), ((5, sh-card_height()/2), (sw-5, sh+card_height()/2)))
     positions = (((int(card_width()*1.5), -card_height()/2), (sw-int(card_width()*1.5), card_height()-(card_height()/2))),
@@ -394,8 +396,8 @@ def main(playertypes, screensize):
             
             deck.shuffle()
         
-        while gtk.events_pending():
-            gtk.main_iteration()
+        while Gtk.events_pending():
+            Gtk.main_iteration()
 
         for event in pygame.event.get():
 
