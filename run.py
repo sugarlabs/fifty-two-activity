@@ -21,7 +21,7 @@
 #    You should have received a copy of the GNU General Public License     #
 #    along with this program; if not, write to the                         #
 #    Free Software Foundation, Inc.,                                       #
-#    59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             #
+#    51 Franklin St, Fifth Floor, Boston, MA  02110-1301 USA               #
 ############################################################################
 
 import gi
@@ -83,13 +83,13 @@ class Game():
         c8s2p = gui.button((100, 400), (200, 35), _("Two players"))
         c8s3p = gui.button((100, 450), (200, 35), _("Three players"))
         c8s4p = gui.button((100, 500), (200, 35), _("Four players"))
-        
+
         c8sframe = gui.frame((c8sheader, c8s2p, c8s3p, c8s4p), (75, 275), (250, 275))
 
         maindeck = gui.button((50, screensize[1]-75), (85, 35), _("Deck"))
         mainphoto = gui.button((screensize[0]-200, screensize[1]-75), (160, 35), _("Photo deck"))
         mainheader = gui.image((50, 25), (screensize[0]-100, 200), 'fiftytwo.png', -1)
-        
+
         mainframe = gui.frame((mainheader, maindeck, mainphoto), (25, screensize[1]-100), (screensize[0]-50, 75))
 
         deckselexit = gui.button((screensize[0]-215, screensize[1]-145), (115, 35), _("Cancel"))
@@ -101,7 +101,7 @@ class Game():
         self.deckseluser = gui.image((855, 115), (crazyeights.card_width(), crazyeights.card_height()), 'back.user.png')
 
         deckselpopup = gui.popup((deckselexit, deckfromjournal, deckselregular, deckselgnome, deckselparis, deckselshapes, self.deckseluser), (100, 100), (screensize[0]-200, screensize[1]-200))
-        
+
         mouseposition = [0, 0, 0]
 
         self.screen.fill((192, 64, 255))
@@ -113,7 +113,7 @@ class Game():
         names.append('a' + _('XO player #2'))
         names.append('a' + _('XO player #3'))
         names.append('a' + _('The XO'))
-        
+
         fpslimiter = pygame.time.Clock()
 
         while True:
@@ -177,11 +177,11 @@ class Game():
                         decksel = False
                         self.screen.fill(MMCOL)
 
-        
+
             if not decksel:
                 c8sframe.update()
                 c8sframe.draw(self.screen, mouseposition)
-            
+
                 mainframe.update()
                 mainframe.draw(self.screen, mouseposition)
             else:
@@ -219,7 +219,7 @@ class Game():
             photodynamic.image = photocamera.get_image(capture)
 
             running = True
-            
+
             while running:
                 fpslimiter.tick(20)
 
@@ -229,7 +229,7 @@ class Game():
                     Gtk.main_iteration()
 
                 for event in pygame.event.get():
-                    
+
                     """if event.type == pygame.KEYDOWN:
                         if event.key == pygame.K_SPACE:
                             photodynamic.image = photocamera.get_image(capture)"""
@@ -256,7 +256,7 @@ class Game():
                             self.deckseluser.image = sub
                             deck.deck = 'user'
                             running = False
-                
+
                 photopopup.update()
                 photopopup.draw(self.screen, mouseposition)
                 r = self.screen.get_rect()
@@ -265,15 +265,15 @@ class Game():
                 r.w = 640
                 r.h = 480
                 self.screen.set_clip(r)
-                
+
                 r.x = mouseposition[0]
                 r.y = mouseposition[1]
                 r.w = 156
                 r.h = 244
-                
+
                 pygame.draw.rect(self.screen, (255, 0, 0), r, 4)
                 self.screen.set_clip()
-                
+
                 pygame.display.flip()
 
             photocamera.stop()
