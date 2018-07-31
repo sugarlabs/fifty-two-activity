@@ -1,9 +1,10 @@
 [Activity]
 name = FiftyTwo
+license = GPLv2+
 activity_version = 3
 bundle_id = org.laptop.games.FiftyTwo
 icon = FiftyTwo
 exec = sugar-activity activity.Activity
-license = GPLv2+
-summary = FiftyTwo is a set of card games
+summary = FiftyTwo is a set of card games.
 repository = https://github.com/sugarlabs/fifty-two-activity
+tags = Game
