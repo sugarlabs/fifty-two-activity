@@ -18,10 +18,10 @@
 #    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         #
 #    GNU General Public License for more details.                          #
 #                                                                          #
-#    You should have received a copy of the GNU General Public License     #
-#    along with this program; if not, write to the                         #
-#    Free Software Foundation, Inc.,                                       #
-#    59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             #
+#    You should have received a copy of the GNU Lesser General Public      #
+#    License along with this library; if not, write to the Free Software   #
+#    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301 #
+#    USA                                                                   #
 ############################################################################
 
 import pygame
@@ -40,19 +40,19 @@ class widget(pygame.sprite.Sprite):
         self.rect.w = size[0]
         self.rect.h = size[1]
         self.special = 0
-    
+
     def detect_click(self, mouseposition):
         if mouseposition[0] > self.rect.left and mouseposition[0] < self.rect.right:
             if mouseposition[1] > self.rect.top and mouseposition[1] < self.rect.bottom:
                 return True
-            
+
         return False
 
 class container(pygame.sprite.OrderedUpdates):
     def __init__(self, widgets, position, size):
         pygame.sprite.OrderedUpdates.__init__(self, widgets)
         self.rect = Rect((position, size))
-    
+
     def draw(self, surface, mouseposition):
         for s in self.sprites():
             if s.special and mouseposition[0] > s.rect.left and mouseposition[0] < s.rect.right \
@@ -113,11 +113,11 @@ class button(widget):
         self.image.set_colorkey((0, 0, 0), pygame.RLEACCEL)
         self.hoverimage.set_colorkey((0, 0, 0), pygame.RLEACCEL)
         self.clickimage.set_colorkey((0, 0, 0), pygame.RLEACCEL)
-        
+
 class frame(container):
     def __init__(self, widgets, position, size):
         container.__init__(self, widgets, position, size)
-    
+
     def draw(self, surface, mouseposition):
         container.draw(self, surface, mouseposition)
         pygame.draw.rect(surface, (32, 32, 32), self.rect, 5)
@@ -125,7 +125,7 @@ class frame(container):
 class popup(frame):
     def __init__(self, widgets, position, size):
         frame.__init__(self, widgets, position, size)
-    
+
     def draw(self, surface, mouseposition):
         surface.fill((48, 48, 48), self.rect)
         frame.draw(self, surface, mouseposition)
