@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 ############################################################################
@@ -60,9 +60,9 @@ def load_image(name, colorkey=None):
     fullname = os.path.join('data', name)
     try:
         image = pygame.image.load(fullname)
-    except pygame.error, message:
+    except pygame.error as message:
          'Cannot load image:', fullname
-         print "Cannot load image: ", fullname
+         print("Cannot load image: ", fullname)
          return None, None
          #raise SystemExit, message
 
