@@ -63,7 +63,6 @@ class Activity(activity.Activity):
         stop_button.show()
         stop_button.connect('clicked', self._stop_cb)
 
-        self.show_all()
 
     def read_file(self, file_path):
         pass
