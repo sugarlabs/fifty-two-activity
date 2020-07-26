@@ -68,7 +68,6 @@ class Game():
                     (event.size[0], event.size[1] - GRID_CELL_SIZE),
                     pygame.RESIZABLE)
                 break
-        pygame.init()
 
         self.screen = pygame.display.get_surface()
         if self.screen:
