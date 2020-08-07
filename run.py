@@ -58,15 +58,16 @@ class Game():
         pass
 
     def run(self):
+        self.running = True
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
+                self.running = False
                 return
             elif event.type == pygame.VIDEORESIZE:
                 pygame.display.set_mode(
                     (event.size[0], event.size[1] - GRID_CELL_SIZE),
                     pygame.RESIZABLE)
                 break
-        pygame.init()
 
         self.screen = pygame.display.get_surface()
         if self.screen:
@@ -116,15 +117,20 @@ class Game():
 
         fpslimiter = pygame.time.Clock()
 
-        while True:
+        while self.running:
             fpslimiter.tick(20)
 
             while Gtk.events_pending():
                 Gtk.main_iteration()
+            if not self.running:
+                break
 
             for event in pygame.event.get():
 
-                if event.type == pygame.MOUSEMOTION:
+                if event.type == pygame.QUIT:
+                    self.running = False
+                    return
+                elif event.type == pygame.MOUSEMOTION:
                     mouseposition[0] = event.pos[0]
                     mouseposition[1] = event.pos[1]
                 elif event.type == pygame.MOUSEBUTTONDOWN:
@@ -132,15 +138,21 @@ class Game():
                 elif event.type == pygame.MOUSEBUTTONUP:
                     mouseposition[2] = 0
                     if not decksel and c8s2p.detect_click(event.pos):
-                        crazyeights.main((names[4], names[0]), screensize)
+                        self.running = \
+                            crazyeights.main((names[4], names[0]),
+                                             screensize)
                         self.screen.fill(MMCOL)
                         pygame.event.set_allowed(pygame.MOUSEMOTION)
                     elif not decksel and  c8s3p.detect_click(event.pos):
-                        crazyeights.main((names[1], names[2], names[0]), screensize)
+                        self.running = \
+                            crazyeights.main((names[1], names[2], names[0]),
+                                             screensize)
                         self.screen.fill(MMCOL)
                         pygame.event.set_allowed(pygame.MOUSEMOTION)
                     elif not decksel and  c8s4p.detect_click(event.pos):
-                        crazyeights.main((names[1], names[2], names[0], names[3]), screensize)
+                        self.running = \
+                             crazyeights.main((names[1], names[2], names[0],
+                                              names[3]), screensize)
                         self.screen.fill(MMCOL)
                         pygame.event.set_allowed(pygame.MOUSEMOTION)
                     elif not decksel and maindeck.detect_click(event.pos):

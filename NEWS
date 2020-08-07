@@ -1,8 +1,20 @@
 All entries are in DD/MM/YY format
 
+v4
+7/08/20 - Release
+ - Add README.md, Refresh POT file, update activity.info
+
+7/08/20 - Fixes
+ - Stop the activity with Gtk stop button, Remove pygame.init() from run(), Fix race condition
+
+9/01/20 - Port to Python3
+
+6/08/18 - Add license and update activity.info
+
 22/02/18 - Port Activity
  - Port activity to GTK3, Sugar Toolkit 3 and Sugargamev1.2
 
+v3
 23/06/08
 
 FiftyTwo now has many features, including: A main menu, photo decks, support for the newer joyride builds, and a fully-functional GUI. This is version 0.2.

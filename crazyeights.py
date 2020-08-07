@@ -252,6 +252,7 @@ def special_cards(deck, discard, players, whosturn, cardprocessed, choosesuitima
     return cardprocessed, whosturn, currentsuit
 
 def main(playertypes, screensize):
+    running = True
     sw = screensize[0]
     sh = screensize[1]
 
@@ -345,7 +346,7 @@ def main(playertypes, screensize):
 
     screen.fill(BGCOL)
 
-    while 1:
+    while running:
         fpslimiter.tick(20)
 
         # Check for win
@@ -399,6 +400,9 @@ def main(playertypes, screensize):
         while Gtk.events_pending():
             Gtk.main_iteration()
 
+        if not running:
+            break
+
         for event in pygame.event.get():
 
             if event.type == KEYDOWN:
@@ -437,7 +441,8 @@ def main(playertypes, screensize):
                         whosturn = end_turn(players, whosturn)
 
             elif event.type == QUIT:
-                return
+                running = False
+                return running
 
             """elif event.type == olpcgames.CONNECT:
                 print "Connect event."
