@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-10-18 03:03-0200\n"
+"POT-Creation-Date: 2020-08-07 22:18+0530\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,79 +21,79 @@ msgstr ""
 msgid "FiftyTwo"
 msgstr ""
 
-#: crazyeights.py:51
+#: activity/activity.info:3
+msgid "FiftyTwo is a set of card games."
+msgstr ""
+
+#: crazyeights.py:53
 msgid "Unnamed"
 msgstr ""
 
-#: crazyeights.py:173
+#: crazyeights.py:175
 msgid "Choose a suit"
 msgstr ""
 
-#: crazyeights.py:275
+#: crazyeights.py:278
 msgid "Loading, please wait!"
 msgstr ""
 
-#: crazyeights.py:353
+#: crazyeights.py:356
 msgid "Game over,"
 msgstr ""
 
-#: crazyeights.py:354
+#: crazyeights.py:357
 #, python-format
 msgid "%s won the game!"
 msgstr ""
 
-#: run.py:70
+#: run.py:83
 msgid "Crazy Eights"
 msgstr ""
 
-#: run.py:71
+#: run.py:84
 msgid "Two players"
 msgstr ""
 
-#: run.py:72
+#: run.py:85
 msgid "Three players"
 msgstr ""
 
-#: run.py:73
+#: run.py:86
 msgid "Four players"
 msgstr ""
 
-#: run.py:77
-msgid "Quit"
-msgstr ""
-
-#: run.py:78
+#: run.py:90
 msgid "Deck"
 msgstr ""
 
-#: run.py:79
+#: run.py:91
 msgid "Photo deck"
 msgstr ""
 
-#: run.py:84 run.py:190
+#: run.py:96 run.py:220
 msgid "Cancel"
 msgstr ""
 
-#: run.py:85
+#: run.py:97
 msgid "from Journal"
 msgstr ""
 
-#: run.py:100
+#: run.py:112
 msgid "You"
 msgstr ""
 
-#: run.py:101
+#: run.py:113
 msgid "XO player #1"
 msgstr ""
 
-#: run.py:102
+#: run.py:114
 msgid "XO player #2"
 msgstr ""
 
-#: run.py:103
+#: run.py:115
 msgid "XO player #3"
 msgstr ""
 
-#: run.py:104
+#: run.py:116
 msgid "The XO"
 msgstr ""
