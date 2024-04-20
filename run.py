@@ -138,20 +138,17 @@ class Game():
                 elif event.type == pygame.MOUSEBUTTONUP:
                     mouseposition[2] = 0
                     if not decksel and c8s2p.detect_click(event.pos):
-                        self.running = \
-                            crazyeights.main((names[4], names[0]),
+                        crazyeights.main((names[4], names[0]),
                                              screensize)
                         self.screen.fill(MMCOL)
                         pygame.event.set_allowed(pygame.MOUSEMOTION)
                     elif not decksel and  c8s3p.detect_click(event.pos):
-                        self.running = \
-                            crazyeights.main((names[1], names[2], names[0]),
+                        crazyeights.main((names[1], names[2], names[0]),
                                              screensize)
                         self.screen.fill(MMCOL)
                         pygame.event.set_allowed(pygame.MOUSEMOTION)
                     elif not decksel and  c8s4p.detect_click(event.pos):
-                        self.running = \
-                             crazyeights.main((names[1], names[2], names[0],
+                        crazyeights.main((names[1], names[2], names[0],
                                               names[3]), screensize)
                         self.screen.fill(MMCOL)
                         pygame.event.set_allowed(pygame.MOUSEMOTION)
@@ -298,4 +295,3 @@ class Game():
             self.deckseluser.image = deck
         except:
             pass
-
