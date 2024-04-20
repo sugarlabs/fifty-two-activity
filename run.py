@@ -138,18 +138,21 @@ class Game():
                 elif event.type == pygame.MOUSEBUTTONUP:
                     mouseposition[2] = 0
                     if not decksel and c8s2p.detect_click(event.pos):
-                        crazyeights.main((names[4], names[0]),
-                                             screensize)
+                        crazyeights.main((names[4], names[0]), screensize)
                         self.screen.fill(MMCOL)
                         pygame.event.set_allowed(pygame.MOUSEMOTION)
                     elif not decksel and  c8s3p.detect_click(event.pos):
-                        crazyeights.main((names[1], names[2], names[0]),
-                                             screensize)
+                        crazyeights.main(
+                            (names[1], names[2], names[0]),
+                            screensize
+                        )
                         self.screen.fill(MMCOL)
                         pygame.event.set_allowed(pygame.MOUSEMOTION)
                     elif not decksel and  c8s4p.detect_click(event.pos):
-                        crazyeights.main((names[1], names[2], names[0],
-                                              names[3]), screensize)
+                        crazyeights.main((
+                            names[1], names[2], names[0],
+                            names[3]), screensize
+                        )
                         self.screen.fill(MMCOL)
                         pygame.event.set_allowed(pygame.MOUSEMOTION)
                     elif not decksel and maindeck.detect_click(event.pos):
@@ -219,6 +222,24 @@ class Game():
 
         pygame.camera.init()
         cams = pygame.camera.list_cameras()
+
+        if not cams:
+            err_font = pygame.font.Font(None, 36)
+            err_text = err_font.render("Camera not found", True, (255, 0, 0))
+            center_x = screensize[0] // 2
+            center_y = screensize[1] // 2
+            err_rect = err_text.get_rect(center=(center_x, center_y - 20))
+            self.screen.blit(err_text, err_rect)
+            deck_instruction_text = err_font.render(
+                "Click on the deck button", True, (255, 255, 255)
+            )
+            deck_instruction_rect = deck_instruction_text.get_rect(
+                center=(center_x, center_y + 20)
+            )
+            self.screen.blit(deck_instruction_text, deck_instruction_rect)
+            pygame.display.flip()
+            pygame.time.wait(2000)
+
         if cams:
             photocamera = pygame.camera.Camera(cams[0], (640, 480), 'RGB')
             photocamera.start()
