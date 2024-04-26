@@ -1,7 +1,7 @@
 What is this?
 =============
 
-The FiftyTwo Activity is a simple cards game. It support mesh play with up to four players (for games like Hearts or Spades), and it already supports single-person play against the computer (basic AI play), and multi-player (on the same computer) play. .
+The FiftyTwo Activity is a simple cards game. It support mesh play with up to four players (for games like Hearts or Spades).
 
 How to use?
 ===========
