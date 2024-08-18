@@ -115,8 +115,9 @@ class Game():
         names.append('a' + _('The XO'))
 
         fpslimiter = pygame.time.Clock()
+        self.playing = True
 
-        while True:
+        while self.playing:
             fpslimiter.tick(20)
 
             while Gtk.events_pending():
@@ -218,9 +219,9 @@ class Game():
             capture = pygame.surface.Surface(camera_size, 0, self.screen)
             photodynamic.image = photocamera.get_image(capture)
 
-            running = True
+            self.running = True
 
-            while running:
+            while self.running:
                 fpslimiter.tick(20)
 
                 photodynamic.image = photocamera.get_image(capture)
@@ -242,7 +243,7 @@ class Game():
                     elif event.type == pygame.MOUSEBUTTONUP:
                         mouseposition[2] = 0
                         if photoreturn.detect_click(event.pos):
-                            running = False
+                            self.running = False
                         elif photodynamic.detect_click(event.pos):
                             r = photodynamic.image.get_rect()
                             r.x = mouseposition[0]-125
@@ -255,7 +256,7 @@ class Game():
                             pygame.image.save(sub, 'data/back.user.png')
                             self.deckseluser.image = sub
                             deck.deck = 'user'
-                            running = False
+                            self.running = False
 
                 photopopup.update()
                 photopopup.draw(self.screen, mouseposition)
